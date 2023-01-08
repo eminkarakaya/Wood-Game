@@ -3,21 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
-public class GameManager : MonoBehaviour , IDataPersistence
+public class GameManager : Singleton<GameManager> , IDataPersistence
 {
-    public static GameManager instance;
-    [SerializeField] private int _money;
+    [SerializeField] private int _money, _wood;
     TextParse[] textParses;
-    [SerializeField] private TextMeshProUGUI _moneyText;
+    [SerializeField] private TextMeshProUGUI _moneyText,_woodText;
     private void Awake()
     {
-        instance = this;
         SetMoney(0);
     }
-
+    public void SetWood(int value)
+    {
+        _wood += value;
+        _woodText.text = CaclText(_wood);
+    }
+    public int GetWood()
+    {
+        return _wood;
+    }
     public int GetMoney()
     {
         return _money;
+    }
+    
+    public void SetMoney(int value)
+    {
+        _money += value;
+        _moneyText.text = CaclText(_money);
+        textParses = FindObjectsOfType<TextParse>();
+        for (int i = 0; i < textParses.Length; i++)
+        {
+            textParses[i].Check(textParses[i].GetComponent<Cost>().GetMoney());
+        }
+    }
+
+    public void LoadData(GameData data)
+    {
+        //_money = data.money;
+    }
+
+    public void SaveData(GameData data)
+    {
+        //data.money = _money;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        throw new NotImplementedException();
     }
     public static string CaclText(float value)
     {
@@ -54,30 +86,5 @@ public class GameManager : MonoBehaviour , IDataPersistence
             return String.Format("{0:0.0}", value / 1000000000000000) + "ab";
         }
         return value.ToString();
-    }
-    public void SetMoney(int value)
-    {
-        _money += value;
-        _moneyText.text = CaclText(_money);
-        textParses = FindObjectsOfType<TextParse>();
-        for (int i = 0; i < textParses.Length; i++)
-        {
-            textParses[i].Check(textParses[i].GetComponent<Cost>().GetMoney());
-        }
-    }
-
-    public void LoadData(GameData data)
-    {
-        //_money = data.money;
-    }
-
-    public void SaveData(GameData data)
-    {
-        //data.money = _money;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        throw new NotImplementedException();
     }
 }

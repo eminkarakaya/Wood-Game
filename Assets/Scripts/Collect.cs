@@ -21,27 +21,36 @@ public class Collect : MonoBehaviour
             CollectItem(other.gameObject.GetComponent<Collectable>());
         }
     }
+    public void SetCurrentBagHeight(float value)
+    {
+        currentBagHeight -= value;
+    }
+    public void SetBagPos()
+    {
+        currentBagHeight = 0;
+        for (int i = 0; i < _collectedItems.Count; i++)
+        {
+            _collectedItems[i].transform.DOLocalJump(new Vector3(0, currentBagHeight, 0), .5f + currentBagHeight, 1, 0f);
+            currentBagHeight += _collectedItems[i].height;
+        }
+    }
     private void CollectItem(Collectable collectable)
     {
         if (_collectedItems.Count < _bagCapacity)
         {
             collectable.transform.SetParent(_bagTransform);
-            if (_collectedItems.Count == 0)
-            {
-                collectable.transform.DOLocalJump(new Vector3(0, currentBagHeight, 0), .5f + currentBagHeight, 1, 1f);
-                currentBagHeight += collectable.height;
-            }
-            else
-            {
+           
 
-                //collectable.transform.DOLocalMove(Vector3.zero, 1f);
-                collectable.transform.DOLocalJump(new Vector3(0,currentBagHeight,0),.5f+currentBagHeight,1, 1f);
-                currentBagHeight += collectable.height;
-                //collectable.transform.position = _collectedItems[_collectedItems.Count - 1].topTransform.position;
-            }
-            collectable.transform.forward = this.transform.forward;
+            //collectable.transform.DOLocalMove(Vector3.zero, 1f);
+            collectable.transform.DOLocalJump(new Vector3(0,currentBagHeight,0),.5f+currentBagHeight,1, 1f).OnComplete(()=>
+            {
+                _collectedItems.Add(collectable);
+            });
+            currentBagHeight += collectable.height;
+            //collectable.transform.position = _collectedItems[_collectedItems.Count - 1].topTransform.position;
             collectable.tag = "Untagged";
-            _collectedItems.Add(collectable);
+            
+            collectable.transform.forward = this.transform.forward;
             collectable.GetComponent<Collider>().enabled = false;
             collectable.transform.localRotation = Quaternion.Euler(Vector3.zero);
             
@@ -53,27 +62,37 @@ public class Collect : MonoBehaviour
             }
         }
     }
+    public void ToggleText(bool value)
+    {
+        maxText.enabled = value;
+    }
     public List<Collectable> GetCollectableObjects()
     {
         return _collectedItems;
     }
-    public void DropItem(CollectableType collectableType,out Collectable collectable)
+    public List<Collectable> GetUpperCollectableObjects(Collectable collectable,List<Collectable> collectables)
     {
-        if (_collectedItems.Count >= 0)
+        List<Collectable> tempCollectables = new List<Collectable>();
+        int temp = 0;
+        for (int i = 0; i < collectables.Count; i++)
         {
-            foreach (var item in _collectedItems)
+            if(collectables[i] == collectable)
             {
-                if(item.type == collectableType)
+                
+                if (collectables.Count >= i + 1) 
                 {
-                    item.transform.SetParent(null);
-                    _collectedItems.Remove(item);
-                    collectable = item;
-                    break;
+                    temp = i+1;
                 }
+                break;
             }
         }
-        collectable = null;
+        for (int i =  collectables.Count -(collectables.Count- temp); i < collectables.Count ; i++)
+        {
+            tempCollectables.Add(collectables[i]);
+        }
+        return tempCollectables;
     }
+    
     //private IEnumerator DropItem(Collectable collectable)
     //{
 

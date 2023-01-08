@@ -9,7 +9,7 @@ public class TextParse : TextMeshProUGUI
     public override Color color { get => base.color; set => base.color = value; }
     public void Check(int value)
     {
-        if (GameManager.instance.GetMoney() < value)
+        if (GameManager.Instance.GetMoney() < value)
             color = Color.red;
         else
         {
