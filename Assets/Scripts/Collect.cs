@@ -25,16 +25,11 @@ public class Collect : MonoBehaviour
     {
         currentBagHeight -= value;
     }
-    public void SetBagPos()
+    public bool IsBagFull()
     {
-        currentBagHeight = 0;
-        for (int i = 0; i < _collectedItems.Count; i++)
-        {
-            _collectedItems[i].transform.DOLocalJump(new Vector3(0, currentBagHeight, 0), .5f + currentBagHeight, 1, 0f);
-            currentBagHeight += _collectedItems[i].height;
-        }
+        return _collectedItems.Count == _bagCapacity;
     }
-    private void CollectItem(Collectable collectable)
+    public void CollectItem(Collectable collectable)
     {
         if (_collectedItems.Count < _bagCapacity)
         {
@@ -42,10 +37,10 @@ public class Collect : MonoBehaviour
            
 
             //collectable.transform.DOLocalMove(Vector3.zero, 1f);
-            collectable.transform.DOLocalJump(new Vector3(0,currentBagHeight,0),.5f+currentBagHeight,1, 1f).OnComplete(()=>
+            collectable.transform.DOLocalJump(new Vector3(0,currentBagHeight,0),currentBagHeight,1, 1f).OnComplete(()=>
             {
-                _collectedItems.Add(collectable);
             });
+            _collectedItems.Add(collectable);
             currentBagHeight += collectable.height;
             //collectable.transform.position = _collectedItems[_collectedItems.Count - 1].topTransform.position;
             collectable.tag = "Untagged";
@@ -92,16 +87,4 @@ public class Collect : MonoBehaviour
         }
         return tempCollectables;
     }
-    
-    //private IEnumerator DropItem(Collectable collectable)
-    //{
-
-    //    if (_collectedItems.Count >= 0)
-    //    {
-    //        collectable.transform.SetParent(null);
-    //        collectable.transform.SetParent(null);
-    //    }
-    //}
-
-
 }
