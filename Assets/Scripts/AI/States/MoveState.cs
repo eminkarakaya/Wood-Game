@@ -11,6 +11,12 @@ public class MoveState : StateBase
     {
         aIAnimation.Move();
         ai.StartMove();        
+        if(ai.GetComponent<Collect>().IsBagFull())
+        {
+            ai.CurrentState = ai.backBaseState;
+            return;
+        }
+
         if(FindTree()== null)
         {
             ai.CurrentState = ai.IdleState;
@@ -34,7 +40,6 @@ public class MoveState : StateBase
     {
         if (other.gameObject == targetTree.gameObject && ai.CurrentState != ai.backBaseState)
         {
-
             ai.treeState.targetTree = targetTree;
             ai.CurrentState = ai.treeState;
         }

@@ -13,15 +13,15 @@ public class DropFromBagDestroy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.TryGetComponent(out Drop _drop))
         {
-            drop = other.GetComponent<Drop>();
+            drop = _drop;
             StartCoroutine(Fill(other.transform));
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.TryGetComponent(out Drop _drop))
         {
             StopAllCoroutines();
         }
@@ -38,7 +38,6 @@ public class DropFromBagDestroy : MonoBehaviour
                 Jump(obj,other);
                 dropMachine.SetCurrent(+1);
                 GameManager.Instance.SetWood(-1);
-                
             }
         }
     }

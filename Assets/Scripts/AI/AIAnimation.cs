@@ -7,7 +7,7 @@ public class AIAnimation : MonoBehaviour
     Animator anim;
     const string MOVE = "Move";
     const string ATTACK = "Hit";
-    private void Start()
+    private void Awake()
     {
         anim = GetComponent<Animator>();
     }
@@ -19,9 +19,11 @@ public class AIAnimation : MonoBehaviour
     public void Move()
     {
         anim.SetBool("Move", true);
+        anim.SetBool("Hit", false);
     }
     public void Idle()
     {
+        anim.SetBool("Hit", false);
         anim.SetBool("Move", false);
     }
 }
