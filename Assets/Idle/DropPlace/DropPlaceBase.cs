@@ -12,7 +12,7 @@ public abstract class DropPlaceBase : MonoBehaviour
     {
         _width = this.GetComponent<RectTransform>().rect.width;
         _height = this.GetComponent<RectTransform>().rect.height;
-        GetComponent<BoxCollider>().size = new Vector3(_width, _height, 5);
+        GetComponent<BoxCollider>().size = new Vector3(_width, _height, 200);
     }
     public void SetCurrent(int value)
     {

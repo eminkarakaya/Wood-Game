@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class GameData
 {
-    public float x, y, z;
-
+    public int moveLevel, attackLevel, bagLevel;
     public GameData()
     {
-        x = 0;
-        y = 0;
-        z = 0;
+        moveLevel = 0;
+        attackLevel = 0;
+        bagLevel = 0;
     }
 }

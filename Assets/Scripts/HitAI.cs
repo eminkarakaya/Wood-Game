@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class HitAI : MonoBehaviour
 {
+    [SerializeField] private Data data;
     public List<Tree> trees;
     Animator animator;
+    public Ax ax;
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        animator.SetFloat("Speed", data.attackSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -16,14 +19,7 @@ public class HitAI : MonoBehaviour
         if (other.gameObject.tag == "Tree")
         {
             Enter(other.GetComponent<Tree>());
-            //if (!trees.Contains(other.GetComponent<Tree>()))
-            //{
-            //    trees.Add(other.GetComponent<Tree>());
-            //}
-            //if (trees.Count > 0)
-            //{
-            //    animator.SetBool("Hit", true);
-            //}
+          
         }
     }
     private void OnTriggerExit(Collider other)
@@ -31,14 +27,7 @@ public class HitAI : MonoBehaviour
         if (other.gameObject.tag == "Tree")
         {
             Exit(other.GetComponent<Tree>());
-            //if (trees.Contains(other.GetComponent<Tree>()))
-            //{
-            //    trees.Remove(other.GetComponent<Tree>());
-            //}
-            //if(trees.Count == 0)
-            //{
-            //    animator.SetBool("Hit", false);
-            //}
+
         }
     }
     public void Enter(Tree tree)
@@ -67,12 +56,15 @@ public class HitAI : MonoBehaviour
     }
     public void Attack()
     {
+        animator.SetFloat("Speed", data.attackSpeed);
         Collect collect = GetComponent<Collect>();
         for (int i = 0; i < trees.Count; i++)
         {
-            var obj = CollectManager.Instance.SpawnObject(transform.position, 1);
-            collect.CollectItem(obj.GetComponent<Collectable>());
-            trees[i].AIHit();
+            trees[i].AIHit(ax.damage,()=>
+            {
+                var obj = CollectManager.Instance.SpawnObject(transform.position, 1);
+                collect.CollectItem(obj.GetComponent<Collectable>());
+            });
             if (trees[i].isDeath)
             {
                 Exit(trees[i]);

@@ -500,6 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155eacd5513e3024db0b2f41e4a33407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 77d440117a79aa044b9c41fcc16e5cae, type: 2}
   minRange: {x: -1, y: 0, z: -1}
   maxRange: {x: 1, y: 0, z: 1}
   childs: []

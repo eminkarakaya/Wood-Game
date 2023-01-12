@@ -47,10 +47,6 @@ public class GameManager : Singleton<GameManager> , IDataPersistence
         //data.money = _money;
     }
 
-    public void SaveData(ref GameData data)
-    {
-        throw new NotImplementedException();
-    }
     public static string CaclText(float value)
     {
         if (value == 0)

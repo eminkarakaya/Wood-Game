@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    [SerializeField] private Data playerData;
     Rigidbody rb;
-    [SerializeField] public float speed;
     private Animator _anim;
     private void Start()
     {
@@ -17,8 +17,8 @@ public class Movement : MonoBehaviour
 
         if (MyJoystick.instance.moved)
         {
-            rb.velocity = (Vector3.right * MyJoystick.instance.dir.x + Vector3.forward * MyJoystick.instance.dir.y) * speed;
-            transform.forward = new Vector3(MyJoystick.instance.dir.x, 0, MyJoystick.instance.dir.y) * (Time.deltaTime * speed);
+            rb.velocity = (Vector3.right * MyJoystick.instance.dir.x + Vector3.forward * MyJoystick.instance.dir.y) * playerData.moveSpeed;
+            transform.forward = new Vector3(MyJoystick.instance.dir.x, 0, MyJoystick.instance.dir.y) * (Time.deltaTime * playerData.moveSpeed);
             _anim.SetBool("Move", true);
         }
         else

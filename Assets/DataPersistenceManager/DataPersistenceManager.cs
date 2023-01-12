@@ -15,10 +15,11 @@ public class DataPersistenceManager : MonoBehaviour
     {
         instance = this;
     }
-    void Start()
+    void OnEnable()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.dataPersistenceObjects = FindAllIDataPersistenceObjects();
+        Debug.Log("Loaded");
         LoadGame();
     }
     public void NewGame()
@@ -43,12 +44,13 @@ public class DataPersistenceManager : MonoBehaviour
     {
         foreach (IDataPersistence dataPersistanceObject in dataPersistenceObjects)
         {
-            dataPersistanceObject.SaveData(ref gameData);
+            dataPersistanceObject.SaveData(gameData);
         }
         dataHandler.Save(gameData);
     }
     void OnApplicationQuit()
     {
+        Debug.Log("Saved");
         SaveGame();
     }
     List<IDataPersistence> FindAllIDataPersistenceObjects()

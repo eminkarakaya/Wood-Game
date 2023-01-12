@@ -1323,6 +1323,7 @@ GameObject:
   - component: {fileID: 3471316507404359618}
   - component: {fileID: 6367671828497678796}
   - component: {fileID: 3471316507404359612}
+  - component: {fileID: 3425417100974115564}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1399,7 +1400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefd59010e3774b4b97f45bc67dc4474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bagCapacity: 20
+  playerData: {fileID: 11400000, guid: 47fe9c5aa93ab514d8e24fcf61016200, type: 2}
   _collectedItems: []
   _bagTransform: {fileID: 274692624}
   maxText: {fileID: 1832288184}
@@ -1428,10 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229533e3d1f82314c800c381ea571b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer:
-    serializedVersion: 2
-    m_Bits: 0
-  speed: 4
+  playerData: {fileID: 11400000, guid: 47fe9c5aa93ab514d8e24fcf61016200, type: 2}
 --- !u!114 &3471316507404359612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,7 +1442,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2f4c1d49d462740be6d429fdf611c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 47fe9c5aa93ab514d8e24fcf61016200, type: 2}
   trees: []
+  ax: {fileID: 11400000, guid: 4cf52538538e745438f80c572424f533, type: 2}
+--- !u!95 &3425417100974115564
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234071533249649592}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0911c08249495dd4e9c6ac33c567c838, type: 3}
+  m_Controller: {fileID: 9100000, guid: 5e850b27bdc711245b7ea6ebff843566, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4390444665804179964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,7 +1474,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4009943670977729350}
-  - component: {fileID: 7009292418718222652}
   - component: {fileID: 7303177272019375004}
   m_Layer: 0
   m_Name: stickman
@@ -1482,26 +1501,6 @@ Transform:
   m_Father: {fileID: 77531805459804626}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &7009292418718222652
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4390444665804179964}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0911c08249495dd4e9c6ac33c567c838, type: 3}
-  m_Controller: {fileID: 9100000, guid: 5e850b27bdc711245b7ea6ebff843566, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7303177272019375004
 MonoBehaviour:
   m_ObjectHideFlags: 0

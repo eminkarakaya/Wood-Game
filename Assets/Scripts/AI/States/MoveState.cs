@@ -28,7 +28,22 @@ public class MoveState : StateBase
 
     public override void UpdateState(AIAnimation aIAnimation)
     {
-        
+        if(targetTree.isDeath)
+        {
+            targetTree = FindTree();
+            if (targetTree == null)
+            {
+                targetTree = FindTree();
+                if (targetTree == null)
+                {
+                    ai.CurrentState = ai.IdleState;
+                    return;
+                }
+            }
+            else
+                ai.SetDestination(target);
+
+        }
     }
     public override void ExitState(AIAnimation aIAnimation)
     {
@@ -69,6 +84,7 @@ public class MoveState : StateBase
             }
         }
         targetTree = nearest;
+        target = targetTree.transform.position;
         return nearest;
     }
 }

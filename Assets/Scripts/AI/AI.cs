@@ -5,6 +5,17 @@ using UnityEngine.AI;
 
 public class AI : MonoBehaviour
 {
+    private int _speed;
+
+    public int Speed
+    {
+        get { return _speed; }
+        set { 
+            _speed = value;
+            agent.speed = _speed;
+        }
+    }
+
     [SerializeField] private AIData aiData;
     private AIAnimation aiAnimations;
     [Header("States")]

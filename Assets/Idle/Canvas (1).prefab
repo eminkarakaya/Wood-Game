@@ -60,7 +60,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentGold: 1000
-  _gold: 1000
   textParse: {fileID: 620823171}
 --- !u!114 &620823171
 MonoBehaviour:
@@ -358,5 +357,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fillImage: {fileID: 842314560154040516}
   money: {fileID: 0}
-  time: 10
+  time: 2
   remainingTime: 0

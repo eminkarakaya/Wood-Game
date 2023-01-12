@@ -27,7 +27,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143835701}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.669}
+  m_LocalPosition: {x: 0, y: 0, z: -0.232}
   m_LocalScale: {x: 0.09999998, y: 0.1, z: 0.09999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.002, y: 1.063}
+  m_AnchoredPosition: {x: 0.098, y: 0.626}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1143835703
@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769019681}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.002, y: 0.33, z: 1.5580001}
+  m_LocalPosition: {x: 0, y: 0.301, z: -0.153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafc9fbc1f9c37e41b34b5be9a75b739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ai: {fileID: 0}
 --- !u!1 &6675950193760184663
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28027aed68592e44bd71b0bb598d9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ai: {fileID: 0}
 --- !u!1 &6675950194391280891
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +323,7 @@ GameObject:
   - component: {fileID: 1010530114}
   - component: {fileID: 1010530113}
   - component: {fileID: 1010530112}
+  - component: {fileID: 1010530115}
   m_Layer: 0
   m_Name: AI
   m_TagString: Untagged
@@ -376,7 +379,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.17
-  m_Speed: 2
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 186.63
@@ -387,7 +390,7 @@ NavMeshAgent:
   m_Height: 0.86
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!65 &6675950194391280894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -396,10 +399,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6675950194391280891}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.9, z: 0.4}
+  m_Size: {x: 0.3, y: 0.9, z: 0.3}
   m_Center: {x: 0, y: 0.45, z: 0}
 --- !u!54 &6675950194391280895
 Rigidbody:
@@ -449,7 +452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c70f4d92ebb85458dd156b339ff843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: a6ffd383e20d80d439bdbad821f8e3e0, type: 2}
   trees: []
+  ax: {fileID: 11400000, guid: 4cf52538538e745438f80c572424f533, type: 2}
 --- !u!114 &1010530113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefd59010e3774b4b97f45bc67dc4474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bagCapacity: 0
+  playerData: {fileID: 11400000, guid: a6ffd383e20d80d439bdbad821f8e3e0, type: 2}
   _collectedItems: []
   _bagTransform: {fileID: 1769019682}
   maxText: {fileID: 1143835702}
@@ -477,6 +482,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b14b9bbc9628ca4db844801ed40f865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1010530115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6675950194391280891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3271fa62936901940acb0f6889d0ec58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6675950194410090514
@@ -523,6 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1431df638a6f7a949b7b37617ee15847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ai: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
   targetTree: {fileID: 0}
 --- !u!1 &6675950195029683002
@@ -569,6 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b468c64cf91bd304f8839613666d1b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ai: {fileID: 0}
   targetTree: {fileID: 0}
   hit: {fileID: 0}
 --- !u!1 &6675950195043173861
@@ -651,6 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a10ba5fb5268d4d8207dc37dd64d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ai: {fileID: 0}
 --- !u!1001 &6675950193679107614
 PrefabInstance:
   m_ObjectHideFlags: 0

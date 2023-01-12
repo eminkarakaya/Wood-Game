@@ -19,6 +19,12 @@ public class BuyPlaceAmount : MonoBehaviour
             var _oldMoney = fill.money.GetMoney();
             fill.money.SetMoneyTotal((int)_money);
             GameManager.Instance.SetMoney( fill.money.GetMoney()-_oldMoney);
+            if(_money == target)
+            {
+                fill.Trigger();
+                fill.ResetImage();
+
+            }
             yield return null;
         }
         // dolunca olcaklar
@@ -29,7 +35,7 @@ public class BuyPlaceAmount : MonoBehaviour
         if (other.tag == "FillImage")
         {
             fill = other.GetComponent<FillAmountPlace>();
-            StartCoroutine(Fill(fill.money._gold, 0));
+            StartCoroutine(Fill(fill.money.GetMoney(), 0));
         }
     }
     private void OnTriggerExit(Collider other)

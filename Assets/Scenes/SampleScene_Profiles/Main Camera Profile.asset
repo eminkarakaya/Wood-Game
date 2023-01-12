@@ -38,4 +38,64 @@ MonoBehaviour:
   m_Name: Main Camera Profile
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: -4097800559940030065}
+  - {fileID: 4035669698175175559}
+--- !u!114 &4035669698175175559
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa9d0d1928eeaa4fbe7c908ac2893c5, type: 3}
+  m_Name: Outline
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  thickness:
+    overrideState: 0
+    value: 2
+  edge:
+    overrideState: 0
+    value: 0.1
+  transitionSmoothness:
+    overrideState: 1
+    value: 0.72
+  color:
+    overrideState: 0
+    value: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &8098930287878729618
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317260ef2666c4a4db0dbf856ccff317, type: 3}
+  m_Name: Outline
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  thickness:
+    overrideState: 1
+    value: 3
+  edge:
+    overrideState: 1
+    value: 0.29
+  transitionSmoothness:
+    overrideState: 1
+    value: 0.2
+  color:
+    overrideState: 1
+    value:
+      r: 0.7125325
+      g: 0.7176471
+      b: 0.6117647
+      a: 1

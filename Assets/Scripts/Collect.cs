@@ -5,7 +5,7 @@ using TMPro;
 using DG.Tweening;
 public class Collect : MonoBehaviour
 {
-    [SerializeField] private int _bagCapacity;
+    [SerializeField] private Data playerData;
     [SerializeField] private List<Collectable> _collectedItems;
     [SerializeField] private Transform _bagTransform;
     [SerializeField] private TextMeshPro maxText;
@@ -27,11 +27,11 @@ public class Collect : MonoBehaviour
     }
     public bool IsBagFull()
     {
-        return _collectedItems.Count == _bagCapacity;
+        return _collectedItems.Count == playerData.bagCapacity;
     }
     public void CollectItem(Collectable collectable)
     {
-        if (_collectedItems.Count < _bagCapacity)
+        if (_collectedItems.Count < playerData.bagCapacity)
         {
             collectable.transform.SetParent(_bagTransform);
            
@@ -49,7 +49,7 @@ public class Collect : MonoBehaviour
             collectable.GetComponent<Collider>().enabled = false;
             collectable.transform.localRotation = Quaternion.Euler(Vector3.zero);
             
-            if (_collectedItems.Count >= _bagCapacity)
+            if (_collectedItems.Count >= playerData.bagCapacity)
             {
                 maxText.transform.position = _collectedItems[_collectedItems.Count - 1].transform.position + Vector3.up;
                 maxText.enabled = true;

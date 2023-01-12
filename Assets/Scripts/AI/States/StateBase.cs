@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class StateBase : MonoBehaviour
 {
-    protected AI ai;
-    private void Start()
+    [SerializeField] protected AI ai;
+    private void Awake()
     {
         ai = GetComponentInParent<AI>();   
     }

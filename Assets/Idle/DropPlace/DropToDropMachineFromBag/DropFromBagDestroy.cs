@@ -4,9 +4,9 @@ using UnityEngine;
 using DG.Tweening;
 public class DropFromBagDestroy : MonoBehaviour
 {
-    [SerializeField] private CollectableType collectableType;
-    DropPlaceBase dropMachine;
-    Drop drop;
+    public bool start;
+    [SerializeField] public CollectableType collectableType;
+    public DropPlaceBase dropMachine;
     private void Start()
     {
         dropMachine = GetComponent<DropPlaceBase>();
@@ -15,32 +15,22 @@ public class DropFromBagDestroy : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out Drop _drop))
         {
-            drop = _drop;
-            StartCoroutine(Fill(other.transform));
+            var qwe = other.gameObject.AddComponent(typeof(DropFromBagDestroyAddComponent)) as DropFromBagDestroyAddComponent;
+            qwe.dropFromBagDestroy = this;
+            start = true;
+            
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.TryGetComponent(out Drop _drop))
         {
+            start = false;
+            Destroy(other.gameObject.GetComponent<DropFromBagDestroyAddComponent>());
             StopAllCoroutines();
         }
     }
-    IEnumerator Fill(Transform other)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(dropMachine.time);
-            var collectable = drop.DropItem(collectableType);
-            if (collectable != null)
-            {
-                var obj = collectable.gameObject;
-                Jump(obj,other);
-                dropMachine.SetCurrent(+1);
-                GameManager.Instance.SetWood(-1);
-            }
-        }
-    }
+    
     public void Jump(GameObject obj,Transform other)
     {
         obj.transform.DOJump(dropMachine.GetAvailablePlace(), 1, 1, 1f).OnComplete(() => {
