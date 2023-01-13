@@ -5,7 +5,7 @@ using UnityEngine;
 public class HitAI : MonoBehaviour
 {
     [SerializeField] private Data data;
-    public List<Tree> trees;
+    public List<TreeBase> trees;
     Animator animator;
     public Ax ax;
     private void Start()
@@ -18,7 +18,7 @@ public class HitAI : MonoBehaviour
     {
         if (other.gameObject.tag == "Tree")
         {
-            Enter(other.GetComponent<Tree>());
+            Enter(other.GetComponent<TreeBase>());
           
         }
     }
@@ -26,11 +26,12 @@ public class HitAI : MonoBehaviour
     {
         if (other.gameObject.tag == "Tree")
         {
-            Exit(other.GetComponent<Tree>());
+            
+            Exit(other.GetComponent<TreeBase>());
 
         }
     }
-    public void Enter(Tree tree)
+    public void Enter(TreeBase tree)
     {
         trees.Add(tree);
         if (trees.Count > 0)
@@ -39,8 +40,9 @@ public class HitAI : MonoBehaviour
         }
         
     }
-    public void Exit(Tree tree)
+    public void Exit(TreeBase tree)
     {
+        
         if (trees.Contains(tree))
         {
             trees.Remove(tree);
@@ -60,6 +62,7 @@ public class HitAI : MonoBehaviour
         Collect collect = GetComponent<Collect>();
         for (int i = 0; i < trees.Count; i++)
         {
+
             trees[i].AIHit(ax.damage,()=>
             {
                 var obj = CollectManager.Instance.SpawnObject(transform.position, 1);

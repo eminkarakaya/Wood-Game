@@ -5,7 +5,7 @@ using System.Linq;
 public class MoveState : StateBase
 {
     public Vector3 target;
-    public Tree targetTree;
+    public TreeBase targetTree;
 
     public override void StartState(AIAnimation aIAnimation)
     {
@@ -59,7 +59,7 @@ public class MoveState : StateBase
             ai.CurrentState = ai.treeState;
         }
     }
-    public Tree FindTree()
+    protected virtual TreeBase FindTree()
     {
         Tree[] trees = FindObjectsOfType<Tree>();
         List<Tree> treeList = new List<Tree>();

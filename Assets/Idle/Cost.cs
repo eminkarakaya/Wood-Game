@@ -7,7 +7,7 @@ public class Cost : MonoBehaviour
     [SerializeField] private int _currentGold;
     public int maxGold;
     public TextParse textParse;
-    void Start()
+    void Awake()
     {
            
         textParse = GetComponent<TextParse>();

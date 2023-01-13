@@ -23,7 +23,7 @@ public class TextParse : TextMeshProUGUI
         onEnoughMoney -= EnoughMoney;
         onNotEnoughMoney -= NotEnoughMoney;
     }
-    public void Check(int value)
+    public void Check(float value)
     {
         if (GameManager.Instance.GetMoney() < value)
             onNotEnoughMoney?.Invoke();

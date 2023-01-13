@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 public class TreeHp : MonoBehaviour
 {
-    public Tree tree;
+    public TreeBase tree;
     public float hp;
     public TreeHp(float hp)
     {

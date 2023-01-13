@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae54b2f15dd553d429c6c0cbcfc1391a, type: 3}
-  m_Name: Ax
+  m_Name: Level5
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 20

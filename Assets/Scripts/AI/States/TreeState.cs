@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TreeState : StateBase
 {
-    public Tree targetTree;
+    public TreeBase targetTree;
     [SerializeField] HitAI hit;
 
     public override void StartState(AIAnimation aIAnimation)

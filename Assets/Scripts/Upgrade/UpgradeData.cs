@@ -27,6 +27,18 @@ public class UpgradeData : MonoBehaviour , IDataPersistence
         baseColor = this.GetComponent<Image>().color;
         costText.AddEnoughDelegate(On);
         costText.AddNotEnoughDelegate(Under);
+        switch (upgradeType)
+        {
+            case UpgradeType.Move:
+                cost.SetMoneyTotal((int)(level * moveIncMultiplier));
+                break;
+            case UpgradeType.AttackSpeed:
+                cost.SetMoneyTotal((int)(level * attackSpeedIncMultiplier));
+                break;
+            case UpgradeType.BagCapacity:
+                cost.SetMoneyTotal((int)(level * bagCapacityIncMultiplier));
+                break;
+        }
     }
     public virtual void UpgradeBase()
     {
@@ -98,7 +110,6 @@ public class UpgradeData : MonoBehaviour , IDataPersistence
                 SetLevel(data.bagLevel);
                 break;
         }
-        
     }
 
     public void SaveData(GameData data)

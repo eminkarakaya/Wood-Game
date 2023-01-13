@@ -5,6 +5,10 @@ using UnityEngine;
 public class ToggleUpgradeCanvas : MonoBehaviour
 {
     [SerializeField] private GameObject canvas;
+    private void Start()
+    {
+        canvas.SetActive(false);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
