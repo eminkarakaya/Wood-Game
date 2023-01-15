@@ -8,6 +8,7 @@ TagManager:
   - Collectable
   - FillImage
   - Tree
+  - Base
   layers:
   - Default
   - TransparentFX

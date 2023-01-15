@@ -7,7 +7,7 @@ public enum UpgradeType
 {
     Move,AttackSpeed,BagCapacity
 }
-public class UpgradeData : MonoBehaviour , IDataPersistence
+public class UpgradeData : MonoBehaviour 
 {
     public UpgradeType upgradeType;
     [SerializeField] protected Data data;
@@ -21,6 +21,14 @@ public class UpgradeData : MonoBehaviour , IDataPersistence
     public TextParse costText;
     private float costIncrementMultiplier = 1.30f;
     private float moveIncMultiplier = 1.1f, attackSpeedIncMultiplier = 1.1f, bagCapacityIncMultiplier = 1.1f;
+    private void OnEnable()
+    {
+        LoadData();
+    }
+    private void OnDisable()
+    {
+        SaveData();
+    }
     private void Start()
     {
         
@@ -96,34 +104,35 @@ public class UpgradeData : MonoBehaviour , IDataPersistence
 
     }
 
-    public void LoadData(GameData data)
+    public void LoadData()
     {
         switch (upgradeType)
         {
             case UpgradeType.Move:
-                SetLevel(data.moveLevel);
+                
+                SetLevel(PlayerPrefs.GetInt("MoveLevel",level));
                 break;
             case UpgradeType.AttackSpeed:
-                SetLevel(data.attackLevel);
+                SetLevel(PlayerPrefs.GetInt("AttackLevel",level));
                 break;
             case UpgradeType.BagCapacity:
-                SetLevel(data.bagLevel);
+                SetLevel(PlayerPrefs.GetInt("BagLevel",level));
                 break;
         }
     }
 
-    public void SaveData(GameData data)
+    public void SaveData()
     {
         switch (upgradeType)
         {
             case UpgradeType.Move:
-                data.moveLevel = level;
+                PlayerPrefs.SetInt("MoveLevel", level);
                 break;
             case UpgradeType.AttackSpeed:
-                data.attackLevel = level;
+                PlayerPrefs.SetInt("AttackLevel", level);
                 break;
             case UpgradeType.BagCapacity:
-                data.bagLevel = level;
+                PlayerPrefs.SetInt("BagLevel", level);
                 break;
         }
     }

@@ -63,9 +63,9 @@ public class HitAI : MonoBehaviour
         for (int i = 0; i < trees.Count; i++)
         {
 
-            trees[i].AIHit(ax.damage,()=>
+            trees[i].AIHit(ax.axData.damage,()=>
             {
-                var obj = CollectManager.Instance.SpawnObject(transform.position, 1);
+                var obj = Instantiate(trees[i].wood,transform.position,Quaternion.identity);
                 collect.CollectItem(obj.GetComponent<Collectable>());
             });
             if (trees[i].isDeath)

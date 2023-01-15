@@ -5,17 +5,24 @@ using UnityEngine;
 public class BackBaseState : StateBase
 {
     Collect collect;
+    [SerializeField] Transform baseTransform;
+    
     public override void StartState(AIAnimation aIAnimation)
     {
+        FarmerMove farmerMove = transform.parent.GetComponentInChildren<FarmerMove>();
+        if(farmerMove != null)
+            baseTransform = FarmManager.Instance.drop.transform;
+        else
+            baseTransform = FarmManager.Instance.baseTransform;
         collect = ai.GetComponent<Collect>();
         aIAnimation.Move();
-        ai.SetDestination(CollectManager.Instance.baseTransform);
+        ai.SetDestination(baseTransform);
         ai.StartMove();
     }
 
     public override void UpdateState(AIAnimation aIAnimation)
     {
-        if(Vector3.Distance(transform.position,CollectManager.Instance.baseTransform.position)<.4f)
+        if(Vector3.Distance(transform.position,baseTransform.position)<.4f)
         {
             ai.CurrentState = ai.waitBagState;
         }

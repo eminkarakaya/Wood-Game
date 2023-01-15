@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Level5
   m_EditorClassIdentifier: 
   damage: 20
+  index: 4

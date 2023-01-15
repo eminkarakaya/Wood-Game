@@ -14,13 +14,22 @@ public class CameraFollow : MonoBehaviour
     {
         instance = this;
     }
-   
-    private void Update()
+    private void Start()
+    {
+    }
+    private void LateUpdate()
     {
         Follow();
     }
     void Follow()
     {
-        transform.position = Vector3.Lerp(transform.position, followObject.transform.position + offset, .1f);
+        
+        if(followObject !=null)
+            transform.position = Vector3.Lerp(transform.position, followObject.transform.position + offset, .5f);
+        else
+        {
+            if(Movement.Instance !=null)
+                followObject = Movement.Instance.gameObject;
+        }
     }
 }

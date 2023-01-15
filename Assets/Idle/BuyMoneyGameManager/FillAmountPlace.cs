@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class FillAmountPlace : MonoBehaviour
 {
+    public delegate void OnFill();
+    public OnFill onFill;
+    [SerializeField] private Transform spawnTransform;
     [SerializeField] private GameObject aiPrefab;
     public Image fillImage;
     public Cost money;
@@ -21,8 +24,8 @@ public class FillAmountPlace : MonoBehaviour
     }
     public void Trigger()
     {
-        Instantiate(aiPrefab, transform.position, Quaternion.identity);
-        
+        onFill?.Invoke();
+        Instantiate(aiPrefab, spawnTransform.position, Quaternion.identity);
     }
     public void ResetImage()
     {

@@ -5,31 +5,56 @@ using DG.Tweening;
 
 public class Seed : MonoBehaviour
 {
-    [SerializeField] private FarmTree tree;
-    [SerializeField] private Transform farmTransform;
-    TreeBase treeBase;
+    public int index;
+    [SerializeField] FarmTree tree;
+    OnTheTree onTheTree;
+    private void OnEnable()
+    {
+        onTheTree = GetComponent<OnTheTree>();
+        onTheTree.onGround += TriggerEnable;
+    }
+    private void OnDisable()
+    {
+        onTheTree.onGround -= TriggerEnable;
+        
+    }
     private void Start()
     {
-        treeBase = GetComponent<TreeBase>();
+        tree = FarmManager.Instance.GetFarmTree(index);
         if(tree.isUnLocked)
         {
+
             Destroy(gameObject);
         }
+        GetComponent<Collider>().enabled = false;
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag =="Player")
         {
             SeedAnimaton();
+            GetComponent<Collider>().enabled = false;
         }
     }
     public void SeedAnimaton()
     {
-        transform.DOJump(farmTransform.position, 10, 1, 3f).OnComplete(()=>
+        
+        CameraFollow.instance.followObject = this.gameObject;
+        Debug.Log(FarmManager.Instance.GetFarmPlace(tree.farmIndex));
+        transform.DOJump(FarmManager.Instance.GetFarmPlace(tree.farmIndex), 10, 1, 3f).OnComplete(()=>
         {
             FarmManager.Instance.UnlockTree(tree.farmIndex);
-            CameraFollow.instance.followObject = Movement.Instance.gameObject;
+
+            
+            tree.ReviveAnim(() =>
+            {
+                CameraFollow.instance.followObject = Movement.Instance.gameObject;
+                Destroy(this.gameObject);
+            });
         });
-        CameraFollow.instance.followObject = this.gameObject;
+    }
+    public void TriggerEnable()
+    {
+        GetComponent<Collider>().enabled = true;
     }
 }

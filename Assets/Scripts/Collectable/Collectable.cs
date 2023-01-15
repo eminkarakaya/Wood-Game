@@ -17,4 +17,5 @@ public class Collectable : MonoBehaviour
     {
         height = Mathf.Abs( transform.position.y - topTransform.position.y);
     }
+    
 }

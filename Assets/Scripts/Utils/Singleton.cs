@@ -20,7 +20,6 @@ public class Singleton<T> : MonoBehaviour where T: Singleton<T>
     }
     private void Awake()
     {
-        if (_instance != null) Destroy(this);
-        DontDestroyOnLoad(this);
+        if (_instance != null) Destroy(this.gameObject);
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 public class DropFromBagDestroy : MonoBehaviour
 {
+    public Transform shopTransform;
+    public DropGold drop;
     public bool start;
     [SerializeField] public CollectableType collectableType;
     public DropPlaceBase dropMachine;
@@ -34,8 +36,8 @@ public class DropFromBagDestroy : MonoBehaviour
     public void Jump(GameObject obj,Transform other)
     {
         obj.transform.DOJump(dropMachine.GetAvailablePlace(), 1, 1, 1f).OnComplete(() => {
-            ObjectPool.Instance.SetPooledObject(obj, ObjectPool.Instance.Wood);
-            Output(other);
+            Destroy(obj.gameObject);
+            drop.AddCollectable();
             });
     }
     public void Output(Transform other)

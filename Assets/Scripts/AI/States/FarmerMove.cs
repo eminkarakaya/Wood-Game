@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class FarmerMove : MoveState
 {
+    
+    public override void StartState(AIAnimation aIAnimation)
+    {
+        base.StartState(aIAnimation);
+        baseTransform = CollectManager.Instance.farmBaseTransform;
+        
+    }
+
+
     protected override TreeBase FindTree()
     {
         FarmTree[] trees = FindObjectsOfType<FarmTree>();

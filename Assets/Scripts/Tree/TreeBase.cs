@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TreeBase : MonoBehaviour
 {
+    [SerializeField] public GameObject wood;
     public delegate void OnDestroyTree();
     public delegate void OnHpDeathTree();
     public OnDestroyTree onDestroyTree;
@@ -77,9 +78,10 @@ public class TreeBase : MonoBehaviour
     public void HpDeath()
     {
         Vector3 random = new Vector3(transform.position.x, 0, transform.position.z) + new Vector3(Random.Range(minRange.x, maxRange.x), 0, Random.Range(minRange.z, maxRange.z));
-        var obj = CollectManager.Instance.SpawnObject(transform.position, 1);
+        var obj = Instantiate(wood, transform.position, Quaternion.identity);
         obj.GetComponent<Collider>().enabled = true;
         obj.transform.DOJump(random, 1, 1, .4f);
+        RotateAnimation rt = obj.AddComponent(typeof(RotateAnimation)) as RotateAnimation;
         childs[index].gameObject.SetActive(false);
         index++;
         onHpDeathTree?.Invoke();
@@ -105,4 +107,5 @@ public class TreeBase : MonoBehaviour
         }
         return childs[index].GetComponent<TreeHp>();
     }
+
 }

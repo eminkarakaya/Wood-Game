@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   attackSpeed: 1
-  bagCapacity: 14
+  bagCapacity: 5

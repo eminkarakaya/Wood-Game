@@ -14,6 +14,7 @@ public class DataPersistenceManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        
     }
     void OnEnable()
     {
@@ -21,6 +22,13 @@ public class DataPersistenceManager : MonoBehaviour
         this.dataPersistenceObjects = FindAllIDataPersistenceObjects();
         Debug.Log("Loaded");
         LoadGame();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            SaveGame();
+        }
     }
     public void NewGame()
     {
@@ -48,10 +56,16 @@ public class DataPersistenceManager : MonoBehaviour
         }
         dataHandler.Save(gameData);
     }
-    void OnApplicationQuit()
+    void OnDisable()
     {
         Debug.Log("Saved");
         SaveGame();
+    }
+    private void OnApplicationQuit()
+    {
+        Debug.Log("Saved");
+        SaveGame();
+        
     }
     List<IDataPersistence> FindAllIDataPersistenceObjects()
     {

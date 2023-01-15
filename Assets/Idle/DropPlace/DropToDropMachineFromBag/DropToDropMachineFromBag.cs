@@ -59,5 +59,6 @@ public class DropToDropMachineFromBag : MonoBehaviour
     public void Jump(GameObject obj)
     {
         obj.transform.DOJump(dropMachine.GetAvailablePlace(), 1, 1, 1f)/*.OnComplete(() => ObjectPool.Instance.SetPooledObject(obj, ObjectPool.Instance.Wood))*/;
+        Debug.Log(dropMachine);
     }
 }

@@ -6,9 +6,10 @@ public class MoveState : StateBase
 {
     public Vector3 target;
     public TreeBase targetTree;
-
+    public Transform baseTransform;
     public override void StartState(AIAnimation aIAnimation)
     {
+
         aIAnimation.Move();
         ai.StartMove();        
         if(ai.GetComponent<Collect>().IsBagFull())

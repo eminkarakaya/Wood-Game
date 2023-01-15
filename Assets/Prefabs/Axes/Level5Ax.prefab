@@ -7,10 +7,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3007434735570041370, guid: 1e7ad9355822f4b44b4aa87610d2902b,
+        type: 3}
+      propertyPath: axData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0eefb966079e74b4ebb49ec204be4ad7,
+        type: 2}
     - target: {fileID: 946480255696363754, guid: 1e7ad9355822f4b44b4aa87610d2902b,
         type: 3}
       propertyPath: m_Name
-      value: AxBase (4)
+      value: Level5Ax
       objectReference: {fileID: 0}
     - target: {fileID: 7226622993797938071, guid: 1e7ad9355822f4b44b4aa87610d2902b,
         type: 3}

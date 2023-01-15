@@ -6,6 +6,7 @@ using DG.Tweening;
 public class CollectManager : Singleton<CollectManager>
 {
     public Transform baseTransform;
+    public Transform farmBaseTransform;
     public GameObject SpawnObject(Vector3 spawnPos,int objPoolIndex)
     {
         var obj = ObjectPool.Instance.GetPooledObject(objPoolIndex);

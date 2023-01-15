@@ -20,6 +20,7 @@ public class FarmTree : TreeBase
     }
     public void Restart()
     {
+        
         index = 1;
         Collider[] colliders = GetComponents<Collider>();
         for (int i = 0; i < colliders.Length; i++)
@@ -30,10 +31,22 @@ public class FarmTree : TreeBase
         }
         foreach (var item in childs)
         {
+            item.GetComponent<TreeHp>().hp = data.hp;
             item.gameObject.SetActive(true);
         }
+        ReviveAnim();
         tag = "Tree";
         isDeath = false;
+    }
+    public void ReviveAnim(System.Action onComplate)
+    {
+        transform.localScale = Vector3.zero;
+        transform.DOScale(Vector3.one * 1.3f, .3f).OnComplete(()=> transform.DOScale(Vector3.one, .1f)).SetDelay(.5f).OnComplete(()=>onComplate?.Invoke());
+    }
+    public void ReviveAnim()
+    {
+        transform.localScale = Vector3.zero;
+        transform.DOScale(Vector3.one * 1.3f, .3f).OnComplete(() => transform.DOScale(Vector3.one, .1f));
     }
     public void RestartAnim()
     {

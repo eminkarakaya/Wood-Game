@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System;
 using TMPro;
-public class GameManager : Singleton<GameManager> , IDataPersistence
+public class GameManager : Singleton<GameManager> 
 {
+    public Transform baseTransform;
+    public GameObject goldPrefab;
     [SerializeField] private int _money, _wood;
     TextParse[] textParses;
     [SerializeField] private TextMeshProUGUI _moneyText,_woodText;
@@ -13,6 +14,7 @@ public class GameManager : Singleton<GameManager> , IDataPersistence
     {
         SetMoney(0);
     }
+    
     public void SetWood(int value)
     {
         _wood += value;
@@ -38,15 +40,6 @@ public class GameManager : Singleton<GameManager> , IDataPersistence
         }
     }
 
-    public void LoadData(GameData data)
-    {
-        //_money = data.money;
-    }
-
-    public void SaveData(GameData data)
-    {
-        //data.money = _money;
-    }
 
     public static string CaclText(float value)
     {
