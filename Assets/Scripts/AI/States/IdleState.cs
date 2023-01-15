@@ -17,6 +17,12 @@ public class IdleState : StateBase
         {
             ai.CurrentState = ai.moveState;
         }
+        TreeBase tree1 = ai.moveState.GetFoundedTree();
+        if(tree1 != null)
+        {
+            ai.CurrentState = ai.moveState;
+
+        }
     }
     public override void ExitState(AIAnimation aIAnimation)
     {

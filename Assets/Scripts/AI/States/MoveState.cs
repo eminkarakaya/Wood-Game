@@ -88,4 +88,9 @@ public class MoveState : StateBase
         target = targetTree.transform.position;
         return nearest;
     }
+    public TreeBase GetFoundedTree()
+    {
+        TreeBase tree = FindTree();
+        return tree;
+    }
 }

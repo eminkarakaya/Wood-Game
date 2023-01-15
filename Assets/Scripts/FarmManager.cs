@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class FarmManager : Singleton<FarmManager>,IDataPersistence
 {
+    public int max;
+    public TextMeshProUGUI workerText;
     public Transform baseTransform;
     [SerializeField] private List<FarmTree> farmTrees;
     [SerializeField] private List<Transform> farmPlaces;
@@ -27,7 +29,6 @@ public class FarmManager : Singleton<FarmManager>,IDataPersistence
     }
     public void LoadData(GameData data)
     {
-        workerCount = data.workerCount;
         if (data.farmTreeIsUnLocked.Count == 0)
             return;
         for (int i = 0; i < data.farmTreeIsUnLocked.Count; i++)
@@ -38,20 +39,26 @@ public class FarmManager : Singleton<FarmManager>,IDataPersistence
                 farmTrees[i].RestartAnim();
             }
         }
+        workerCount = PlayerPrefs.GetInt("WorkerCount");
         for (int i = 0; i < workerCount; i++)
         {
             fillAmountPlace.Trigger();
         }
+        SetWorkerCount(workerCount);
     }
     private void WorkerCount()
     {
         workerCount++;
     }
-
+    public int GetWorkerCount()
+    {
+        return workerCount;
+    }
     public void SaveData(GameData data)
     {
-        data.workerCount = workerCount;
         data.farmTreeIsUnLocked.Clear();
+        PlayerPrefs.SetInt("WorkerCount",workerCount);
+        
         for (int i = 0; i < farmTrees.Count; i++)
         {
             data.farmTreeIsUnLocked.Add(farmTrees[i].isUnLocked);
@@ -70,5 +77,18 @@ public class FarmManager : Singleton<FarmManager>,IDataPersistence
     public FarmTree GetFarmTree(int index)
     {
         return farmTrees[index];
+    }
+    public void SetWorkerCount(int value)
+    {
+        workerCount = value;
+        workerText.text = workerCount.ToString() + "/" + max;
+    }
+    public bool CheckFull()
+    {
+        if(workerCount >= max)
+        {
+            return true;
+        }
+        return false;
     }
 }

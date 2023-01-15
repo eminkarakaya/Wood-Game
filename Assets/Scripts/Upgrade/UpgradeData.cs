@@ -47,6 +47,10 @@ public class UpgradeData : MonoBehaviour
                 cost.SetMoneyTotal((int)(level * bagCapacityIncMultiplier));
                 break;
         }
+        if(cost.GetMoney() == 0)
+        {
+            cost.SetMoneyTotal(100);
+        }
     }
     public virtual void UpgradeBase()
     {
