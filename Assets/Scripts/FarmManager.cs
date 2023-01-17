@@ -16,6 +16,7 @@ public class FarmManager : Singleton<FarmManager>,IDataPersistence
     public FillAmountPlace fillAmountPlace;
     private void Awake()
     {
+        workerText = fillAmountPlace.transform.GetChild(7).GetComponent<TextMeshProUGUI>();
         fillAmountPlace.onFill += WorkerCount;
     }
     private void OnDisable()

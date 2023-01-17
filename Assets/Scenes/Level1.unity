@@ -2252,6 +2252,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e78d5205daa0a4bbe835f288030383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &309139464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5113611148745183331, guid: 3b33eafce2ede0e47b853750e8ed74c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 5113611148147786229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &309139469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309139464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447035d1f5e39e346b065bdcd6fcd533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: 7d1d702f74f3a1d44b0319bde1729567, type: 2}
+  goldAnimPrefab: {fileID: 2452535497322574533, guid: adf7ee2ed1a8580428c1d2619ab87efc,
+    type: 3}
+  distanceFactor: 100
+  radius: 100
+  goldPrefab: {fileID: 0}
+  goldinScene: {fileID: 0}
+  ease: 0
+  goldText: {fileID: 0}
+  parent: {fileID: 0}
+  goldSpawnTransform: {fileID: 0}
 --- !u!1 &312458795
 GameObject:
   m_ObjectHideFlags: 0
