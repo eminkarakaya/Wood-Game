@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 public class DropGold : MonoBehaviour
 {
+    public bool isFull;
     public Transform machineTransform;
     public Transform [] transforms;
     public List<DropData> dropDatas = new List<DropData>();
@@ -21,14 +22,7 @@ public class DropGold : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            dropDatas[5]._transform = transforms[5].position;
-
-        }
-    }
+  
     public DropData GetAvailablePlace()
     {
         foreach (var item in dropDatas)
@@ -38,15 +32,19 @@ public class DropGold : MonoBehaviour
                 return item;
             }
         }
+        isFull = true;
         return null;
     }
     public void AddCollectable()
     {
         var place = GetAvailablePlace();
-        var obj = Instantiate(GameManager.Instance.goldPrefab);
-        obj.transform.position = machineTransform.position;
-        obj.transform.DOJump(place._transform, 1, 1, .2f);
-        place.gold = obj.GetComponent<Gold>();
+        if(place != null)
+        {
+            var obj = Instantiate(GameManager.Instance.goldPrefab);
+            obj.transform.position = machineTransform.position;
+            obj.transform.DOJump(place._transform, 1, 1, .2f);
+            place.gold = obj.GetComponent<Gold>();
+        }
     }
 }
 [System.Serializable]

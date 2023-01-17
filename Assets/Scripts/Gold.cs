@@ -10,6 +10,7 @@ public class Gold : MonoBehaviour
         if(other.gameObject.tag =="Player")
         {
             GameManager.Instance.SetMoney(count);
+            GoldAnim.instance.EarnGoldAnim2(count, other.transform);
             Destroy(this.gameObject);
         }
     }
