@@ -3,27 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
-public class GameManager : Singleton<GameManager> 
+public class GameManager : Singleton<GameManager> , IDataPersistence
 {
     public Transform baseTransform;
     public GameObject goldPrefab;
-    [SerializeField] private int _money, _wood;
+    [SerializeField] private int _money;
     TextParse[] textParses;
     [SerializeField] private TextMeshProUGUI _moneyText,_woodText;
-    private void Awake()
-    {
-        SetMoney(0);
-    }
-    
-    public void SetWood(int value)
-    {
-        _wood += value;
-        _woodText.text = CaclText(_wood);
-    }
-    public int GetWood()
-    {
-        return _wood;
-    }
     public int GetMoney()
     {
         return _money;
@@ -76,5 +62,15 @@ public class GameManager : Singleton<GameManager>
             return String.Format("{0:0.0}", value / 1000000000000000) + "ab";
         }
         return value.ToString();
+    }
+
+    public void LoadData(GameData data)
+    {
+        SetMoney(data.gold);
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.gold = GetMoney();
     }
 }

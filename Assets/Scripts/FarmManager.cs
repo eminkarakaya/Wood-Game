@@ -30,8 +30,8 @@ public class FarmManager : Singleton<FarmManager>,IDataPersistence
     }
     public void LoadData(GameData data)
     {
-        if (data.farmTreeIsUnLocked.Count == 0)
-            return;
+       
+        Debug.Log(data.farmTreeIsUnLocked.Count);
         for (int i = 0; i < data.farmTreeIsUnLocked.Count; i++)
         {
             farmTrees[i].isUnLocked = data.farmTreeIsUnLocked[i];
@@ -40,12 +40,23 @@ public class FarmManager : Singleton<FarmManager>,IDataPersistence
                 farmTrees[i].RestartAnim();
             }
         }
-        workerCount = PlayerPrefs.GetInt("WorkerCount");
+        workerCount = data.worketCount;
         for (int i = 0; i < workerCount; i++)
         {
             fillAmountPlace.Trigger();
         }
         SetWorkerCount(workerCount);
+    }
+    public void SaveData(GameData data)
+    {
+        data.farmTreeIsUnLocked.Clear();
+        data.worketCount = workerCount;
+        
+        for (int i = 0; i < farmTrees.Count; i++)
+        {
+            data.farmTreeIsUnLocked.Add(farmTrees[i].isUnLocked);
+            Debug.Log(data.farmTreeIsUnLocked[i]);
+        }
     }
     private void WorkerCount()
     {
@@ -54,16 +65,6 @@ public class FarmManager : Singleton<FarmManager>,IDataPersistence
     public int GetWorkerCount()
     {
         return workerCount;
-    }
-    public void SaveData(GameData data)
-    {
-        data.farmTreeIsUnLocked.Clear();
-        PlayerPrefs.SetInt("WorkerCount",workerCount);
-        
-        for (int i = 0; i < farmTrees.Count; i++)
-        {
-            data.farmTreeIsUnLocked.Add(farmTrees[i].isUnLocked);
-        }
     }
     public void UnlockTree(int index)
     {

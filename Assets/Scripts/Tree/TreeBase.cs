@@ -80,6 +80,9 @@ public class TreeBase : MonoBehaviour
         Vector3 random = new Vector3(transform.position.x, 0, transform.position.z) + new Vector3(Random.Range(minRange.x, maxRange.x), 0, Random.Range(minRange.z, maxRange.z));
         var obj = Instantiate(wood, transform.position, Quaternion.identity);
         obj.GetComponent<Collider>().enabled = true;
+        MeshRenderer meshRenderer = obj.GetComponentInChildren<MeshRenderer>();
+        Outline outline = meshRenderer.gameObject.AddComponent(typeof(Outline)) as Outline;
+        outline.OutlineColor = meshRenderer.materials[0].color;
         obj.transform.DOJump(random, 1, 1, .4f);
         RotateAnimation rt = obj.AddComponent(typeof(RotateAnimation)) as RotateAnimation;
         childs[index].gameObject.SetActive(false);

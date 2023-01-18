@@ -35,7 +35,10 @@ public class BuyPlaceAmount : MonoBehaviour
         if (other.tag == "FillImage")
         {
             fill = other.GetComponent<FillAmountPlace>();
-            StartCoroutine(Fill(fill.money.GetMoney(), 0));
+            if(GameManager.Instance.GetMoney() >= fill.money.GetMoney())
+            {
+                StartCoroutine(Fill(fill.money.GetMoney(), 0));
+            }
         }
     }
     private void OnTriggerExit(Collider other)

@@ -26,7 +26,7 @@ public class DropFromBagDestroyAddComponent : MonoBehaviour
                 var obj = collectable.gameObject;
                 dropFromBagDestroy.Jump(obj, other);
                 dropFromBagDestroy.dropMachine.SetCurrent(+1);
-                GameManager.Instance.SetWood(-1);
+                //GameManager.Instance.SetWood(-1);
             }
         }
     }

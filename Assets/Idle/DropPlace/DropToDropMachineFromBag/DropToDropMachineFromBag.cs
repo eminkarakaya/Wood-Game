@@ -47,7 +47,7 @@ public class DropToDropMachineFromBag : MonoBehaviour
                     dropMachine.AddCollectable(obj);
                     Jump(obj);
                     dropMachine.SetCurrent(+1);
-                    GameManager.Instance.SetWood(-1);
+                    //GameManager.Instance.SetWood(-1);
                 }
 
 

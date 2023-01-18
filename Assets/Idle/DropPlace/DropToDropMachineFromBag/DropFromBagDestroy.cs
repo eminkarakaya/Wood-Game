@@ -4,6 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 public class DropFromBagDestroy : MonoBehaviour
 {
+    public delegate void OnDrop();
+    public OnDrop onDrop;
     public Transform shopTransform;
     public DropGold drop;
     public bool start;
@@ -38,6 +40,7 @@ public class DropFromBagDestroy : MonoBehaviour
         obj.transform.DOJump(dropMachine.GetAvailablePlace(), 1, 1, 1f).OnComplete(() => {
             Destroy(obj.gameObject);
             drop.AddCollectable();
+            onDrop?.Invoke();
             });
     }
     public void Output(Transform other)

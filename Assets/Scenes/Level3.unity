@@ -829,7 +829,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 115198454}
-  - component: {fileID: 115198453}
+  - component: {fileID: 115198455}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -837,19 +837,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &115198453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 115198452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13916de2c61507d4a82c7bf27dba1b0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileName: data.txt
 --- !u!4 &115198454
 Transform:
   m_ObjectHideFlags: 0
@@ -865,6 +852,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &115198455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115198452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a43c513eda07bf94db46b159ebbc8b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableDataPersistence: 0
+  initializeDataIfNull: 1
+  overrideSelectedProfileId: 0
+  testSelectedProfileId: test
+  fileName: data2.txt
+  useEncryption: 0
+  autoSaveTimeSeconds: 60
 --- !u!1 &128951296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,6 +1101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d903bbd0d95f6184da3fd457045896a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFull: 0
   machineTransform: {fileID: 1610449055}
   transforms:
   - {fileID: 634200864}
@@ -15132,6 +15139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d903bbd0d95f6184da3fd457045896a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFull: 0
   machineTransform: {fileID: 984094566}
   transforms:
   - {fileID: 1558193405}

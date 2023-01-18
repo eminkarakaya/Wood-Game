@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : Singleton<Movement>
 {
+    public bool isAnim;
     public Transform hand;
     public delegate void OnStop();
     public OnStop onStop;
@@ -18,6 +19,8 @@ public class Movement : Singleton<Movement>
     }
     private void FixedUpdate()
     {
+        if (isAnim)
+            return;
 
         if (MyJoystick.instance.moved)
         {

@@ -40,7 +40,7 @@ public class DropToDropMachineFromGMDestroy : MonoBehaviour
             {
                 yield return new WaitForSeconds(dropMachine.time);
                 dropMachine.SetCurrent(+1);
-                GameManager.Instance.SetWood(-1);
+                //GameManager.Instance.SetWood(-1);
 
                 var obj = CollectManager.Instance.SpawnObject(_other.position, ObjectPool.Instance.Wood);
 

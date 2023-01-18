@@ -40,7 +40,7 @@ public class Seed : MonoBehaviour
     {
         
         CameraFollow.instance.followObject = this.gameObject;
-        Debug.Log(FarmManager.Instance.GetFarmPlace(tree.farmIndex));
+        Movement.Instance.isAnim = true;
         transform.DOJump(FarmManager.Instance.GetFarmPlace(tree.farmIndex), 10, 1, 3f).OnComplete(()=>
         {
             FarmManager.Instance.UnlockTree(tree.farmIndex);
@@ -50,6 +50,7 @@ public class Seed : MonoBehaviour
             {
                 CameraFollow.instance.followObject = Movement.Instance.gameObject;
                 Destroy(this.gameObject);
+                Movement.Instance.isAnim = false;
             });
         });
     }

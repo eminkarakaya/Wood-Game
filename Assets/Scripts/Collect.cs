@@ -34,8 +34,9 @@ public class Collect : MonoBehaviour
         if (_collectedItems.Count < playerData.bagCapacity)
         {
             collectable.transform.SetParent(_bagTransform);
-           
 
+            Outline outline = collectable.GetComponentInChildren<Outline>();
+            Destroy(outline);
             //collectable.transform.DOLocalMove(Vector3.zero, 1f);
             collectable.transform.DOLocalJump(new Vector3(0,currentBagHeight,0),currentBagHeight,1, 1f).OnComplete(()=>
             {

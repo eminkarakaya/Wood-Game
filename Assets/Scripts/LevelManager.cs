@@ -4,39 +4,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelManager : Singleton<LevelManager>
+public class LevelManager : Singleton<LevelManager> , IDataPersistence
 {
     [SerializeField] private GameObject player;
     public int level;
     private Image fader;
     public Transform spawnPoint;
-    private void OnEnable()
-    {
-        LoadData();
-        StartCoroutine(FadeScene(level, 1, .2f));
-    }
-    private void OnDisable()
-    {
-        SaveData();   
-    }
 
     void Awake()
     {
-        LevelManager[] objs = GameObject.FindObjectsOfType<LevelManager>();
+        LevelManager[] objs = FindObjectsOfType<LevelManager>();
         if (objs.Length > 1)
         {
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
     }
-    public void LoadData()
-    {
-        level = PlayerPrefs.GetInt("Level");
-    }
-    public void SaveData()
-    {
-        PlayerPrefs.SetInt("Level", level);
-    }
+   
     private void Start()
     {
         Instantiate(player,spawnPoint.position,Quaternion.identity);
@@ -82,5 +66,16 @@ public class LevelManager : Singleton<LevelManager>
             level = 0;
         }
         StartCoroutine(FadeScene(level, 1f, .5f));
+    }
+
+    public void LoadData(GameData data)
+    {
+        level = data.level;
+    }
+
+    public void SaveData(GameData data)
+    {
+        PlayerPrefs.SetInt("level", level);
+        data.level = level;
     }
 }
