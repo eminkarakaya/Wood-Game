@@ -569,6 +569,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d51d69a68ecb024390e14d0898b3dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: ec1e4a5176022114785a39765b7e0823, type: 3}
+  isFarm: 0
   spawnTransform: {fileID: 842314560744926894}
   aiPrefab: {fileID: 6675950194391280891, guid: 570e5e3da16d2f04db01893ce88ac1fc,
     type: 3}

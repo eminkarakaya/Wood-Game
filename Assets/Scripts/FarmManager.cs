@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class FarmManager : Singleton<FarmManager>,IDataPersistence
+public class FarmManager : MonoBehaviour,IDataPersistence
 {
     public int max;
     public TextMeshProUGUI workerText;
@@ -14,8 +14,19 @@ public class FarmManager : Singleton<FarmManager>,IDataPersistence
     public DropGold dropGold;
     public DropFromBagDestroy drop;
     public FillAmountPlace fillAmountPlace;
+    public static FarmManager Instance;
+
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Debug.Log("Found more than one Data Persistence Manager in the scene. Destroying the newest one.");
+            Destroy(this.gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
+
         workerText = fillAmountPlace.transform.GetChild(7).GetComponent<TextMeshProUGUI>();
         fillAmountPlace.onFill += WorkerCount;
     }
@@ -30,7 +41,6 @@ public class FarmManager : Singleton<FarmManager>,IDataPersistence
     }
     public void LoadData(GameData data)
     {
-       
         Debug.Log(data.farmTreeIsUnLocked.Count);
         for (int i = 0; i < data.farmTreeIsUnLocked.Count; i++)
         {
@@ -51,11 +61,11 @@ public class FarmManager : Singleton<FarmManager>,IDataPersistence
     {
         data.farmTreeIsUnLocked.Clear();
         data.worketCount = workerCount;
+            Debug.Log(farmTrees.Count);
         
         for (int i = 0; i < farmTrees.Count; i++)
         {
             data.farmTreeIsUnLocked.Add(farmTrees[i].isUnLocked);
-            Debug.Log(data.farmTreeIsUnLocked[i]);
         }
     }
     private void WorkerCount()

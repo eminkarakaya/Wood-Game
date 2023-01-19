@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 public class FillAmountPlace : MonoBehaviour
 {
+    [SerializeField] private AudioClip clip;
     public bool isFarm;
     public delegate void OnFill();
     public OnFill onFill;
@@ -16,14 +17,6 @@ public class FillAmountPlace : MonoBehaviour
     private float _width, _height;
     public float time = 10;
     public float remainingTime;
-    private void OnEnable()
-    {
-        
-    }
-    private void OnDisable()
-    {
-        
-    }
     private void Start()
     {
         remainingTime = 0;
@@ -43,6 +36,8 @@ public class FillAmountPlace : MonoBehaviour
     public void Trigger()
     {
         onFill?.Invoke();
+        if(clip!=null)
+            AudioSource.PlayClipAtPoint(clip, CameraFollow.instance.transform.position);
         if(isFarm)
         {
             

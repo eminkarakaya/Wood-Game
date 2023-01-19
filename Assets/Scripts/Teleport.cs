@@ -11,7 +11,6 @@ public class Teleport : MonoBehaviour
         {
             GetComponent<Collider>().enabled = false;
             LevelManager.Instance.NextLevel();
-            Debug.Log("next");
         }
     }
 }

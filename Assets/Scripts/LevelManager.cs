@@ -25,6 +25,14 @@ public class LevelManager : Singleton<LevelManager> , IDataPersistence
     {
         Instantiate(player,spawnPoint.position,Quaternion.identity);
     }
+    private void OnEnable()
+    {
+        level = PlayerPrefs.GetInt("Level");
+    }
+    private void OnDisable()
+    {
+        PlayerPrefs.SetInt("Level", level);
+    }
     public IEnumerator FadeScene(int level, float duration, float waitTime)
     {
         yield return new WaitForSeconds(1);
@@ -44,8 +52,10 @@ public class LevelManager : Singleton<LevelManager> , IDataPersistence
         {
             yield return null;
         }
+        Debug.Log(level + " level");
         SceneManager.LoadScene(level);
         yield return new WaitForSeconds(waitTime);
+        Debug.Log(level + " level");
         passed = 0;
         fader = transform.GetChild(0).GetChild(0).GetComponent<Image>();
         fader.color = new Color(0, 0, 0, 1);
@@ -61,16 +71,16 @@ public class LevelManager : Singleton<LevelManager> , IDataPersistence
     public void NextLevel()
     {
         level++;
-        if (level >= SceneManager.sceneCountInBuildSettings -1)
+        if (level >= SceneManager.sceneCountInBuildSettings )
         {
             level = 0;
         }
-        StartCoroutine(FadeScene(level, 1f, .5f));
+        StartCoroutine(FadeScene(level + 1, 1f, .5f));
     }
 
     public void LoadData(GameData data)
     {
-        level = data.level;
+
     }
 
     public void SaveData(GameData data)

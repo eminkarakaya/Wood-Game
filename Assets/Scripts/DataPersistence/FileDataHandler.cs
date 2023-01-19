@@ -22,7 +22,8 @@ public class FileDataHandler
     public GameData Load(string profileId, bool allowRestoreFromBackup = true) 
     {
         // base case - if the profileId is null, return right away
-        if (profileId == null) 
+        //Debug.Log(profileId);
+        if (profileId == null)
         {
             return null;
         }
@@ -76,6 +77,7 @@ public class FileDataHandler
                 }
             }
         }
+        
         return loadedData;
     }
 

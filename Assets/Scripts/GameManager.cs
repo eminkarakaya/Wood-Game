@@ -3,13 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
-public class GameManager : Singleton<GameManager> , IDataPersistence
+public class GameManager : MonoBehaviour , IDataPersistence
 {
+    public static GameManager Instance;
     public Transform baseTransform;
     public GameObject goldPrefab;
     [SerializeField] private int _money;
     TextParse[] textParses;
     [SerializeField] private TextMeshProUGUI _moneyText,_woodText;
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.Log("Found more than one game manager in the scene. Destroying the newest one.");
+            Destroy(this.gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
+        SetMoney(0);
+    }
+    private void OnEnable()
+    {
+        _money = PlayerPrefs.GetInt("Gold");
+        _moneyText.text = CaclText(_money);
+
+    }
+    private void OnDisable()
+    {
+        Debug.Log("save gold");
+        PlayerPrefs.SetInt("Gold", GetMoney());
+        
+    }
     public int GetMoney()
     {
         return _money;
@@ -66,11 +91,13 @@ public class GameManager : Singleton<GameManager> , IDataPersistence
 
     public void LoadData(GameData data)
     {
-        SetMoney(data.gold);
+        
     }
 
     public void SaveData(GameData data)
     {
-        data.gold = GetMoney();
+        
+        
+        //data.gold = GetMoney();
     }
 }

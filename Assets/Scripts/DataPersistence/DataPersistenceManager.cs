@@ -31,10 +31,8 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void Awake() 
     {
-        Debug.Log("qwewqe");
         if (instance != null) 
         {
-            Debug.Log("Found more than one Data Persistence Manager in the scene. Destroying the newest one.");
             Destroy(this.gameObject);
             return;
         }
@@ -136,7 +134,7 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.LoadData(gameData);
         }
-        Debug.Log("Loaded");
+        Debug.Log("Loaded",this.gameObject);
     }
 
     public void SaveGame()

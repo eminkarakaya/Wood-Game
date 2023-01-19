@@ -9,6 +9,7 @@ TagManager:
   - FillImage
   - Tree
   - Base
+  - Gold
   layers:
   - Default
   - TransparentFX

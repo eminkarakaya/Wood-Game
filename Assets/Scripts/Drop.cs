@@ -8,6 +8,8 @@ public class Drop : MonoBehaviour
 {
     
     Collect collect;
+    [SerializeField] private AudioClip collectClip;
+
     private void Start()
     {
         collect = GetComponent<Collect>();
@@ -25,11 +27,12 @@ public class Drop : MonoBehaviour
                     item.transform.SetParent(null);
                     item.transform.rotation = Quaternion.Euler(Vector3.zero);
                     collect.SetCurrentBagHeight(item.height);
+                    if(TryGetComponent(out Player player))
+                        AudioSource.PlayClipAtPoint(collectClip, CameraFollow.instance. transform.position);
                     for (int j = 0; j < collect.GetUpperCollectableObjects(item, collect.GetCollectableObjects()).Count; j++)
                     {
                         var obj = collect.GetUpperCollectableObjects(item, collect.GetCollectableObjects())[j];
                         float offsett = obj.transform.localPosition.y;
-                        Debug.Log(obj,obj);
                         obj.transform.DOLocalMoveY(offsett - obj.height, 0f);
                     }
                     collect.ToggleText(false);

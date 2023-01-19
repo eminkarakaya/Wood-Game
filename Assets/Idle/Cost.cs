@@ -11,7 +11,12 @@ public class Cost : MonoBehaviour
     {
            
         textParse = GetComponent<TextParse>();
+
+    }
+    private void Start()
+    {
         MoneyRaise(0);
+        
     }
     public void MoneyRaise(int value)
     {

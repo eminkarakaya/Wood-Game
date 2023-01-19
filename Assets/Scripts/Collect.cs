@@ -5,6 +5,7 @@ using TMPro;
 using DG.Tweening;
 public class Collect : MonoBehaviour
 {
+    [SerializeField] private AudioClip collectClip;
     [SerializeField] private Data playerData;
     [SerializeField] private List<Collectable> _collectedItems;
     [SerializeField] private Transform _bagTransform;
@@ -18,8 +19,10 @@ public class Collect : MonoBehaviour
     {
         if (other.gameObject.tag == "Collectable")
         {
+            
             CollectItem(other.gameObject.GetComponent<Collectable>());
         }
+        
     }
     public void SetCurrentBagHeight(float value)
     {
@@ -34,7 +37,8 @@ public class Collect : MonoBehaviour
         if (_collectedItems.Count < playerData.bagCapacity)
         {
             collectable.transform.SetParent(_bagTransform);
-
+            if(TryGetComponent(out Player player))
+                AudioSource.PlayClipAtPoint(collectClip, CameraFollow.instance.transform.position);
             Outline outline = collectable.GetComponentInChildren<Outline>();
             Destroy(outline);
             //collectable.transform.DOLocalMove(Vector3.zero, 1f);

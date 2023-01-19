@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MyJoystick : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class MyJoystick : MonoBehaviour
         Vector2 pos = Input.mousePosition;
         if(Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
             center.position = pos;
             knob.position = pos;
             ShowHide(true);

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faafa05913c1ab5428435fdf5c594361, type: 3}
   m_Name: Lv6Tree
   m_EditorClassIdentifier: 
-  hp: 3
+  hp: 15

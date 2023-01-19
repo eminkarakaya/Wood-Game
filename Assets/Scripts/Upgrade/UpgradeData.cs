@@ -9,6 +9,7 @@ public enum UpgradeType
 }
 public class UpgradeData : MonoBehaviour 
 {
+    [SerializeField] private ParticleSystem particle;
     public UpgradeType upgradeType;
     [SerializeField] protected Data data;
     public Color disableColor,baseColor;
@@ -75,6 +76,8 @@ public class UpgradeData : MonoBehaviour
             SetCost();
             LevelRaise();
             UpgradeBase();
+            particle.gameObject.transform.position = Movement.Instance.transform.position;
+            particle.Play();
         }
     }
     

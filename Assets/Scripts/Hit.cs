@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hit : MonoBehaviour
 {
-    
+    [SerializeField] private AudioClip [] hitClip;
     Movement movement;
     [SerializeField] private Transform hand;
     [SerializeField] private Data data;
@@ -69,6 +69,8 @@ public class Hit : MonoBehaviour
     }
     public void Attack()
     {
+        int random = Random.Range(0, hitClip.Length);
+        AudioSource.PlayClipAtPoint(hitClip[random], CameraFollow.instance.transform.position);
         animator.SetFloat("Speed", data.attackSpeed);
         for (int i = 0; i < trees.Count; i++)
         {
