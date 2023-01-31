@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
-public class GameManager : MonoBehaviour , IDataPersistence
+public class GameManager : MonoBehaviour 
 {
     public static GameManager Instance;
     public Transform baseTransform;
@@ -89,15 +89,5 @@ public class GameManager : MonoBehaviour , IDataPersistence
         return value.ToString();
     }
 
-    public void LoadData(GameData data)
-    {
-        
-    }
-
-    public void SaveData(GameData data)
-    {
-        
-        
-        //data.gold = GetMoney();
-    }
+    
 }

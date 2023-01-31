@@ -62,7 +62,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode) 
     {
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        //LoadGame();
 
         // start up the auto saving coroutine
         if (autoSaveCoroutine != null) 
