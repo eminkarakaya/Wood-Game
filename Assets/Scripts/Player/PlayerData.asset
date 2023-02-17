@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9013d3c7121e6943932f37535f429cf, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  attackSpeed: 1
-  bagCapacity: 10
+  defaultMove: 0
+  defaultAttack: 0
+  defaultBag: 0
+  moveSpeed: 3
+  attackSpeed: 2
+  bagCapacity: 6

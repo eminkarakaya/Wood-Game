@@ -113,19 +113,39 @@ public class UpgradeData : MonoBehaviour
 
     public void LoadData()
     {
-        switch (upgradeType)
-        {
-            case UpgradeType.Move:
-                
-                SetLevel(PlayerPrefs.GetInt("MoveLevel",level));
-                break;
-            case UpgradeType.AttackSpeed:
-                SetLevel(PlayerPrefs.GetInt("AttackLevel",level));
-                break;
-            case UpgradeType.BagCapacity:
-                SetLevel(PlayerPrefs.GetInt("BagLevel",level));
-                break;
-        }
+        // if(!GameManager.Instance.resetData)
+        // {
+            switch (upgradeType)
+            {
+                case UpgradeType.Move:
+                    
+                    SetLevel(PlayerPrefs.GetInt("MoveLevel",level));
+                    break;
+                case UpgradeType.AttackSpeed:
+                    SetLevel(PlayerPrefs.GetInt("AttackLevel",level));
+                    break;
+                case UpgradeType.BagCapacity:
+                    SetLevel(PlayerPrefs.GetInt("BagLevel",level));
+                    break;
+            }
+        // }
+        // else
+        // {
+        //     switch (upgradeType)
+        //     {
+        //         case UpgradeType.Move:
+                    
+        //             level = 0;
+        //             break;
+        //         case UpgradeType.AttackSpeed:
+        //             level = 0;
+        //             break;
+        //         case UpgradeType.BagCapacity:
+        //             level = 0;
+        //             break;
+        //     }
+
+        // }
     }
 
     public void SaveData()

@@ -1819,6 +1819,9 @@ MonoBehaviour:
   dropGold: {fileID: 142557445}
   drop: {fileID: 1610449049}
   fillAmountPlace: {fileID: 507314898}
+  aiPrefab: {fileID: 2946968817983437712, guid: c3dd3b31eb844a549a44025734deaf83,
+    type: 3}
+  spawnTransform: {fileID: 1588134581}
 --- !u!4 &241627863
 Transform:
   m_ObjectHideFlags: 0

@@ -1764,6 +1764,9 @@ MonoBehaviour:
   dropGold: {fileID: 142557445}
   drop: {fileID: 1610449049}
   fillAmountPlace: {fileID: 507314898}
+  aiPrefab: {fileID: 2946968817983437712, guid: c3dd3b31eb844a549a44025734deaf83,
+    type: 3}
+  spawnTransform: {fileID: 1588134581}
 --- !u!4 &241627863
 Transform:
   m_ObjectHideFlags: 0
@@ -3015,7 +3018,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 42
+  m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &424275654
 GameObject:
@@ -4581,7 +4584,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &700812838
 GameObject:
@@ -6196,7 +6199,7 @@ Transform:
   - {fileID: 2067262182}
   - {fileID: 241627863}
   m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &946527827
 PrefabInstance:
@@ -8882,7 +8885,7 @@ Transform:
   m_Children:
   - {fileID: 142625071}
   m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 89.811, z: 0}
 --- !u!1001 &1287383616
 PrefabInstance:
@@ -13233,7 +13236,7 @@ RectTransform:
   - {fileID: 891935022}
   - {fileID: 1509480914}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

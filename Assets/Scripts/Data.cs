@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Data : ScriptableObject
 {
+    [SerializeField] protected float defaultMove,defaultAttack;
+    [SerializeField] protected int defaultBag;
     public float moveSpeed, attackSpeed;
     public int bagCapacity;
     public Data()

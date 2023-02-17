@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a175c07ed2174d4ab75b386be67de55, type: 3}
   m_Name: AI Data
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  defaultMove: 0
+  defaultAttack: 0
+  defaultBag: 0
+  moveSpeed: 3
   attackSpeed: 1
   bagCapacity: 5

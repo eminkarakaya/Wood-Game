@@ -31,12 +31,18 @@ public class AxManager : Singleton<AxManager>
     
     public void LoadData()
     {
-        currentAxIndex = PlayerPrefs.GetInt("AxIndex");
+        if(!GameManager.Instance.resetData)
+        {
+            currentAxIndex = PlayerPrefs.GetInt("AxIndex");
+        }
+        else
+        {
+            currentAxIndex = 0;
+        }
     }
 
     public void SaveData()
     {
-        
         PlayerPrefs.SetInt("AxIndex", currentAxIndex);
     }
 

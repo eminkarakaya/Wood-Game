@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _money;
     TextParse[] textParses;
     [SerializeField] private TextMeshProUGUI _moneyText,_woodText;
+    public bool resetData;
+    
     private void Awake()
     {
         if (Instance != null)
@@ -25,12 +27,14 @@ public class GameManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        
         _money = PlayerPrefs.GetInt("Gold");
         _moneyText.text = CaclText(_money);
 
     }
     private void OnDisable()
     {
+        
         Debug.Log("save gold");
         PlayerPrefs.SetInt("Gold", GetMoney());
         

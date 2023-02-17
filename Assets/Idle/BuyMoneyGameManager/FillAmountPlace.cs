@@ -33,6 +33,7 @@ public class FillAmountPlace : MonoBehaviour
         }
 
     }
+    
     public void Trigger()
     {
         onFill?.Invoke();
@@ -40,17 +41,16 @@ public class FillAmountPlace : MonoBehaviour
             AudioSource.PlayClipAtPoint(clip, CameraFollow.instance.transform.position);
         if(isFarm)
         {
-            
-                Instantiate(aiPrefab, spawnTransform.position, Quaternion.identity);
-                FarmManager.Instance.SetWorkerCount(FarmManager.Instance.GetWorkerCount() );
-            
-                if(FarmManager.Instance.CheckFull())
-                {
-                    Destroy(this.gameObject);
-                }
+            Instantiate(aiPrefab, spawnTransform.position, Quaternion.identity);
+            FarmManager.Instance.SetWorkerCount(FarmManager.Instance.GetWorkerCount() +1);
+        
+            if(FarmManager.Instance.CheckFull())
+            {
+                Destroy(this.gameObject);
+            }
         }
         else
-                Instantiate(aiPrefab, spawnTransform.position, Quaternion.identity);
+            Instantiate(aiPrefab, spawnTransform.position, Quaternion.identity);
     }
     public void ResetImage()
     {
