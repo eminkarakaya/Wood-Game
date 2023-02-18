@@ -16,5 +16,5 @@ MonoBehaviour:
   defaultAttack: 0
   defaultBag: 0
   moveSpeed: 3
-  attackSpeed: 2
+  attackSpeed: 1
   bagCapacity: 6

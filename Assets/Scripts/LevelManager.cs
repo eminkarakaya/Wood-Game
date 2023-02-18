@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private GameObject player;
-    public int level;
+    public int level = 0;
     private Image fader;
     public Transform spawnPoint;
 
@@ -28,7 +28,7 @@ public class LevelManager : Singleton<LevelManager>
             level = PlayerPrefs.GetInt("Level");
         }
         else
-            level = 1;
+            level = 0;
         
         Instantiate(player,spawnPoint.position,Quaternion.identity);
     }
