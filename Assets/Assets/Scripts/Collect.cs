@@ -39,7 +39,7 @@ public class Collect : MonoBehaviour
             collectable.transform.SetParent(_bagTransform);
             if(TryGetComponent(out Player player))
                 AudioSource.PlayClipAtPoint(collectClip, CameraFollow.instance.transform.position);
-            Outline outline = collectable.GetComponentInChildren<Outline>();
+            QuickOutline outline = collectable.GetComponentInChildren<QuickOutline>();
             Destroy(outline);
             //collectable.transform.DOLocalMove(Vector3.zero, 1f);
             collectable.transform.DOLocalJump(new Vector3(0,currentBagHeight,0),currentBagHeight,1, 1f).OnComplete(()=>

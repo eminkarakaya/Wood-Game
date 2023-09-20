@@ -41,12 +41,12 @@ public abstract class Quest : MonoBehaviour
     }
     void OutlineOn()
     {
-        Outline [] outlines = questObject.GetComponentsInChildren<MeshRenderer>().Where(x=>!x.TryGetComponent(out Outline outline)).Select(x=>x.gameObject.AddComponent(typeof(Outline)) as Outline).ToArray();
+        QuickOutline [] outlines = questObject.GetComponentsInChildren<MeshRenderer>().Where(x=>!x.TryGetComponent(out QuickOutline outline)).Select(x=>x.gameObject.AddComponent(typeof(QuickOutline)) as QuickOutline).ToArray();
         outlines.Select(x => x.OutlineColor = Color.green);
     }
     void OutlineOff()
     {
-        Outline[] outlines = questObject.GetComponentsInChildren<Outline>();
+        QuickOutline[] outlines = questObject.GetComponentsInChildren<QuickOutline>();
         foreach (var item in outlines)
         {
             item.enabled = false;
