@@ -15,6 +15,8 @@ public class SceneController : Singleton<SceneController>
         if(PlayerPrefs.HasKey("Level"))
         {
             currentScene = PlayerPrefs.GetInt("Level");
+            if(currentScene == 0)
+                currentScene = 1;
         }
         else
         {
